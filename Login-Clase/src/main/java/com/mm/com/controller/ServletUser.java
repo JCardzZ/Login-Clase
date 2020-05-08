@@ -52,7 +52,9 @@ public class ServletUser extends HttpServlet {
 		
 		if(verificarUsuario==1) {
 			
-			System.out.println("OK ENTRASTES");
+			response.sendRedirect("principal.jsp");
+			
+		//	System.out.println("entrastes");
 			
 		} else {
 			

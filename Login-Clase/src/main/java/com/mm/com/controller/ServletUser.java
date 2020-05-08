@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.mm.com.dao.UsuarioDao;
 import com.mm.com.model.TbUsuariop;
@@ -40,7 +41,19 @@ public class ServletUser extends HttpServlet {
 		
 		String usu = request.getParameter("usuario");
 		String contra = request.getParameter("contra");
+		String cerrarSession = request.getParameter("btncerrar");
 		
+		if (cerrarSession !=null) {
+			if	(cerrarSession.equals("CERRAR")) {
+				
+				HttpSession cerrarSessiones = (HttpSession) request.getSession();
+				cerrarSessiones.invalidate();
+						
+				response.sendRedirect("index.jsp");
+				
+			}
+		}
+
 		TbUsuariop usuario = new TbUsuariop();
 		
 		UsuarioDao usuDao = new UsuarioDao();
@@ -52,7 +65,9 @@ public class ServletUser extends HttpServlet {
 		
 		if(verificarUsuario==1) {
 			
-			response.sendRedirect("principal.jsp");
+			HttpSession sesion = request.getSession(true);
+			sesion.setAttribute("usuario", usu);
+			response.sendRedirect("Inicio.jsp");
 			
 		//	System.out.println("entrastes");
 			
@@ -61,10 +76,10 @@ public class ServletUser extends HttpServlet {
 			System.out.println("ERROR");
 			
 		}
-		
-		response.sendRedirect("index.jsp");
-		
-		
 	}
+	//	response.sendRedirect("index.jsp");
+		
+		
+	
 
 }

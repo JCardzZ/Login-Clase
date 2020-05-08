@@ -1,13 +1,17 @@
 package com.mm.com.controller;
 
 import java.io.IOException;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mm.com.dao.HistorialDao;
 import com.mm.com.dao.UsuarioDao;
+import com.mm.com.model.TbHistorial;
 import com.mm.com.model.TbUsuariop;
 
 /**
@@ -63,7 +67,16 @@ public class ServletUser extends HttpServlet {
 		
 		int  verificarUsuario = usuDao.ingresoUsuario(usuario).size();
 		
+		
 		if(verificarUsuario==1) {
+			HistorialDao histoDao = new HistorialDao();
+			TbHistorial histo = new TbHistorial();
+			Date fecha = new Date();
+			
+			histo.setFecha(fecha);
+			usuario.setIdUsuarios(usuario.getIdUsuarios());
+			histo.setTbUsuariop(usuario);
+			histoDao.agregarDatosHistorial(histo);
 			
 			HttpSession sesion = request.getSession(true);
 			sesion.setAttribute("usuario", usu);

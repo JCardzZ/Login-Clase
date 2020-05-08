@@ -21,10 +21,19 @@ public class UsuarioDao {
 		try {
 			em.getTransaction().begin();
 			Usuario = em.createQuery("from TbUsuariop as u where u.usuario = '"+usu.getUsuario()+ "' and u.contrasenia='" + usu.getContrasenia() + "'").getResultList();
+			
 			em.getTransaction().commit();
+			
+			for (TbUsuariop datosids : Usuario) {
+			
+			usu.setIdUsuarios(datosids.getIdUsuarios());
+				
+			}
+			
 		} catch (Exception e) {
 			System.out.println(e + "Error");
 		}
+		
 		return Usuario;
 	}
 }

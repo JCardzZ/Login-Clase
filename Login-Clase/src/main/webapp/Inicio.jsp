@@ -18,6 +18,7 @@ if(usuariovariabledesesion==null){
 <input type="submit" value="CERRAR" name="btncerrar">
 </form>
 
+<a href="historialUsuarios.jsp">VER HISTORIAL DE USUARIOS</a>
 <h1>Bienvenido a la pagina principal</h1>
 </body>
 </html>

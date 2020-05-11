@@ -10,8 +10,18 @@
   	<description></description>
   	<servlet-class>com.mm.com.controller.ServletUser</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ServletHistorialUsuario</servlet-name>
+  	<display-name>ServletHistorialUsuario</display-name>
+  	<description></description>
+  	<servlet-class>com.mm.com.controller.ServletHistorialUsuario</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ServletUser</servlet-name>
   	<url-pattern>/ServletUser</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ServletHistorialUsuario</servlet-name>
+  	<url-pattern>/ServletHistorialUsuario</url-pattern>
   </servlet-mapping>
 </web-app>
